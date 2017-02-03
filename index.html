@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="styles.css">
+	<link href="http://fr.allfont.net/allfont.css?fonts=chow-fun" rel="stylesheet" type="text/css" />
+		<title>Positionnement CSS</title>
+			</head>
+				<body>
+					<div id="bandeau"><h1><strong>寿司 SUSHI KILLER 寿司 </strong></h1></div>
+					<div id="contenu">
+						<div id="cliker">
+							<button id="bouton"><img src="sushi.jpg"></button></div>
+						<div id="multipli"><button id="multiplicateur">Multiplicateur x1</button>
+							</div>
+						<div id="score"></div>
+					</div>
+				<div id="pied_page">By Rico7128</div>
+			
+
+			<script type="text/javascript">$bouton = document.getElementById("bouton");
+
+		$multiplicateur = document.getElementById("multiplicateur");
+		$score = document.getElementById("score");
+		score = 0;
+		nbMultiplicateur = 1;
+
+function afficherScore() {
+    $score.innerHTML = "Score : " + score;
+}
+
+function afficherNbMultiplicateur() {
+    $multiplicateur.innerHTML = "Multiplicateur x" + nbMultiplicateur + " (prix du prochain : " + prix() + ")";
+}
+
+function clic() {
+    score = score + nbMultiplicateur;
+    afficherScore();
+}
+
+function prix() {
+    return 20 * nbMultiplicateur * nbMultiplicateur;
+}
+
+function acheterMultiplicateur() {
+    if (score >= prix()) {
+        score = score - prix();
+        nbMultiplicateur = nbMultiplicateur + 1;
+        afficherNbMultiplicateur();
+        afficherScore();
+    } else {
+        alert("Votre score est insuffisant !");
+    }
+}
+
+$bouton.onclick = clic;
+$multiplicateur.onclick = acheterMultiplicateur;
+afficherScore();
+afficherNbMultiplicateur();
+				</script>
+		</body>
+</html>
